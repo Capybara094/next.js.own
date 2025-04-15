@@ -1,15 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { JSX, useState } from "react";
 import CustomButton from "./components/button";
+import CustomCard from "./components/card";
 
 export default function Home() {
   const [selected, setSelected] = useState<string>("選項一");
 
-  const descriptions: Record<string, string> = {
-    選項一: "這是第一個選項的說明。",
-    選項二: "這是第二個選項的說明。",
-    選項三: "這是第三個選項的說明。",
+  const descriptions: Record<string, JSX.Element> = {
+    選項一: (
+      <CustomCard
+        title="選項一"
+        description={`這是第一個選項的說明。\n請點選上方按鈕切換。`}
+      />
+    ),
+    選項二: (
+      <CustomCard
+        title="選項二"
+        description={`這是第二個選項的說明。\n這是一段額外說明。`}
+      />
+    ),
+    選項三: (
+      <CustomCard
+        title="選項三"
+        description={`這是第三個選項的說明。\n感謝使用！`}
+      />
+    ),
   };
 
   return (
@@ -24,9 +40,9 @@ export default function Home() {
           />
         ))}
       </div>
-
+        <br/>
       <div className="mt-4 p-4 border rounded">
-        <p>{descriptions[selected]}</p>
+        <div>{descriptions[selected]}</div>
       </div>
     </div>
   );
