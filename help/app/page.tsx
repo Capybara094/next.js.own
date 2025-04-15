@@ -9,10 +9,16 @@ export default function Home() {
 
   const descriptions: Record<string, JSX.Element> = {
     選項一: (
+      <div className="space-y-4">
       <CustomCard
-        title="選項一"
+        title="一"
         description={`這是第一個選項的說明。\n請點選上方按鈕切換。`}
       />
+      <CustomCard
+        title="二"
+        description={`這是第一個選項的說明。\n請點選上方按鈕切換。`}
+      />
+      </div>
     ),
     選項二: (
       <CustomCard
@@ -29,7 +35,11 @@ export default function Home() {
   };
 
   return (
+    
     <div className="p-6">
+      <div className="pb-6 bg-gradient-to-r from-zinc-500 to-violet-500 bg-clip-text text-5xl font-extrabold text-transparent flex justify-evenly">
+  使用說明
+</div>
       <div className="flex justify-evenly">
         {Object.keys(descriptions).map((option) => (
           <CustomButton
@@ -41,7 +51,7 @@ export default function Home() {
         ))}
       </div>
         <br/>
-      <div className="mt-4 p-4 border rounded">
+      <div className="">
         <div>{descriptions[selected]}</div>
       </div>
     </div>
