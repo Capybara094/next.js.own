@@ -2,44 +2,51 @@
 
 import { JSX, useState } from "react";
 import CustomButton from "./components/button";
-import CustomCard from "./components/card";
+import OuterCard from "./components/OuteCard";
+
 
 export default function Home() {
-  const [selected, setSelected] = useState<string>("選項一");
+  const [selected, setSelected] = useState<string>("EchoMind");
 
   const descriptions: Record<string, JSX.Element> = {
-    選項一: (
+    EchoMind: (
       <div className="space-y-4">
-      <CustomCard
-        title="一"
-        description={`這是第一個選項的說明。\n請點選上方按鈕切換。`}
-      />
-      <CustomCard
-        title="二"
-        description={`這是第一個選項的說明。\n請點選上方按鈕切換。`}
-      />
+        <OuterCard
+          title="一"
+          description={`這是第一個選項的說明。\n請點選上方按鈕切換。`}
+          imageUrl="https://via.placeholder.com/300"
+        />
+        <OuterCard
+          title="二"
+          description={`這是第一個選項的說明。\n請點選上方按鈕切換。`}
+        />
       </div>
     ),
-    選項二: (
-      <CustomCard
+    聊天歷史: (
+      <OuterCard
         title="選項二"
         description={`這是第二個選項的說明。\n這是一段額外說明。`}
       />
     ),
-    選項三: (
-      <CustomCard
+    匿名留言板: (
+      <OuterCard
         title="選項三"
+        description={`這是第二個選項的說明。\n這是一段額外說明。`}
+      />
+    ),
+    小遊戲: (
+      <OuterCard
+        title="選項四"
         description={`這是第三個選項的說明。\n感謝使用！`}
       />
     ),
   };
 
   return (
-    
-    <div className="p-6">
-      <div className="pb-6 bg-gradient-to-r from-zinc-500 to-violet-500 bg-clip-text text-5xl font-extrabold text-transparent flex justify-evenly">
-  使用說明
-</div>
+    <div className="h-screen w-full bg-gray-800">
+      <div className="pb-6 pt-6 bg-gradient-to-r from-zinc-500 to-violet-500 bg-clip-text text-5xl font-extrabold text-transparent flex justify-evenly">
+        使用說明
+      </div>
       <div className="flex justify-evenly">
         {Object.keys(descriptions).map((option) => (
           <CustomButton
@@ -50,10 +57,10 @@ export default function Home() {
           />
         ))}
       </div>
-        <br/>
-      <div className="">
-        <div>{descriptions[selected]}</div>
+      <br />
+      <div className="grid w-full grid-flow-dense grid-cols-30 grid-rows-30 gap-2 bg-gray-950/5 p-2 dark:bg-white/10">
+        <div className="col-span-30 row-span-10">{descriptions[selected]}</div>
       </div>
     </div>
-  );
+  );  
 }
